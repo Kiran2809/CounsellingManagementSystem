@@ -1,0 +1,124 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Section -->
+
+<div class="bg-primary text-white text-center p-5">
+
+    <h1>🎓 Counselling Management System</h1>
+
+    <p class="lead">
+        A smart platform for students to book counselling appointments online.
+    </p>
+
+    <br />
+
+    <a asp-controller="Student"
+       asp-action="Register"
+       class="btn btn-light btn-lg m-2">
+        👨‍🎓 Student Register
+    </a>
+
+    <a asp-controller="Student"
+       asp-action="Login"
+       class="btn btn-success btn-lg m-2">
+        👨‍🎓 Student Login
+    </a>
+
+    <a asp-controller="Counsellor"
+       asp-action="Login"
+       class="btn btn-info btn-lg m-2 text-white">
+        👨‍🏫 Counsellor Login
+    </a>
+
+    <a asp-controller="Admin"
+       asp-action="Login"
+       class="btn btn-dark btn-lg m-2">
+        👨‍💼 Admin Login
+    </a>
+
+</div>
+
+<!-- About Section -->
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">
+        About Our System
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h1>📅</h1>
+
+                    <h4>Book Appointments</h4>
+
+                    <p>
+                        Students can easily book counselling sessions online.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h1>👨‍🏫</h1>
+
+                    <h4>Expert Counsellors</h4>
+
+                    <p>
+                        Professional counsellors provide academic and personal guidance.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h1>🔒</h1>
+
+                    <h4>Secure Portal</h4>
+
+                    <p>
+                        Student information and appointments are securely managed.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Footer -->
+
+<footer class="bg-dark text-white text-center p-3 mt-5">
+
+    © 2025 Counselling Management System |
+    Developed using ASP.NET Core MVC & SQL Server
+
+</footer>

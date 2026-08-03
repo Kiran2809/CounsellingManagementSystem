@@ -1,0 +1,86 @@
+﻿@model CounsellingManagementSystem.Models.Appointment
+
+@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["Title"] = "Book Appointment";
+}
+
+<div class="container mt-5">
+
+    @if (TempData["Success"] != null)
+    {
+        <div id="successAlert" class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h3>Book Counselling Appointment</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="BookAppointment" method="post">
+
+                <div class="mb-3">
+                    <label asp-for="CounsellorId" class="form-label">
+                        Select Counsellor
+                    </label>
+
+                    <select asp-for="CounsellorId" class="form-select">
+                        <option value="">-- Select Counsellor --</option>
+
+                        @foreach (var counsellor in ViewBag.Counsellors)
+                        {
+                            <option value="@counsellor.CounsellorId">
+                                @counsellor.FullName - @counsellor.Department
+                            </option>
+                        }
+                    </select>
+
+                    <span asp-validation-for="CounsellorId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="AppointmentDate"></label>
+                    <input asp-for="AppointmentDate"
+                           type="date"
+                           class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="AppointmentTime"></label>
+                    <input asp-for="AppointmentTime"
+                           type="time"
+                           class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Reason"></label>
+                    <textarea asp-for="Reason"
+                              class="form-control"
+                              rows="4"></textarea>
+                </div>
+
+                <button class="btn btn-success">
+                    Book Appointment
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script>
+        setTimeout(function() {
+            document.getElementById("successAlert")?.remove();
+        }, 2000);
+    </script>
+}

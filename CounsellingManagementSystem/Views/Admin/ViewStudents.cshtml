@@ -1,0 +1,97 @@
+﻿@model IEnumerable<CounsellingManagementSystem.Models.Student>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Students";
+}
+
+<form asp-action="ViewStudents" method="get" class="mb-3">
+
+    <div class="input-group">
+
+        <input type="text"
+               name="search"
+               class="form-control"
+               placeholder="Search by Name or Email"
+               value="@ViewBag.Search" />
+
+        <button class="btn btn-primary" type="submit">
+            🔍 Search
+        </button>
+
+        <a asp-action="ViewStudents" class="btn btn-secondary">
+            Reset
+        </a>
+
+    </div>
+
+</form>
+
+<div class="container mt-4">
+
+    <h2>Registered Students</h2>
+    <div class="mb-3">
+
+        <a asp-action="ExportStudentsPdf"
+           class="btn btn-danger">
+            <i class="bi bi-file-earmark-pdf"></i>
+            Export PDF
+        </a>
+
+        <a asp-action="ExportStudentsExcel"
+           class="btn btn-success">
+            <i class="bi bi-file-earmark-excel"></i>
+            Export Excel
+        </a>
+
+    </div>
+
+    <table class="table table-bordered table-hover">
+
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Department</th>
+                <th>Year</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.StudentId</td>
+                    <td>@student.FullName</td>
+                    <td>@student.Email</td>
+                    <td>@student.Phone</td>
+                    <td>@student.Department</td>
+                    <td>@student.YearOfStudy</td>
+                    <td>
+
+                        <a asp-action="StudentDetails"
+                           asp-route-id="@student.StudentId"
+                           class="btn btn-info btn-sm">
+                            👁 View
+                        </a>
+
+                        <a asp-action="DeleteStudent"
+                           asp-route-id="@student.StudentId"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Delete this student?')">
+                            🗑 Delete
+                        </a>
+
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

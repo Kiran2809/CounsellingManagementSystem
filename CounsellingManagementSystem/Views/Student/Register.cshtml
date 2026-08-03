@@ -1,0 +1,86 @@
+﻿@model CounsellingManagementSystem.Models.Student
+
+@{
+    ViewData["Title"] = "Student Registration";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            @if (TempData["Success"] != null)
+            {
+                <div id="successAlert" class="alert alert-success">
+                    @TempData["Success"]
+                </div>
+            }
+            <div class="card shadow">
+
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-center">Student Registration</h3>
+                </div>
+
+
+                <div class="card-body">
+
+                    <form asp-action="Register" method="post">
+
+                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="FullName" class="form-label"></label>
+                            <input asp-for="FullName" class="form-control" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Phone" class="form-label"></label>
+                            <input asp-for="Phone" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Department" class="form-label"></label>
+                            <input asp-for="Department" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="YearOfStudy" class="form-label"></label>
+                            <input asp-for="YearOfStudy" class="form-control" />
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">
+                            Register
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        setTimeout(function () {
+            document.getElementById("successAlert")?.remove();
+        }, 2000);
+    </script>
+}

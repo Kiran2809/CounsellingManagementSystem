@@ -1,0 +1,82 @@
+﻿@model CounsellingManagementSystem.Models.Appointment
+
+@{
+    Layout = "~/Views/Shared/_CounsellorLayout.cshtml";
+    ViewData["Title"] = "Review Appointment";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-info text-white">
+            <h3>📝 Review Appointment</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="ReviewAppointment" method="post">
+
+                <input type="hidden" asp-for="AppointmentId" />
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Student Name</strong></label>
+                    <input class="form-control"
+                           value="@Model.Student.FullName"
+                           readonly />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Appointment Date</strong></label>
+                    <input class="form-control"
+                           value="@Model.AppointmentDate.ToShortDateString()"
+                           readonly />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Appointment Time</strong></label>
+                    <input class="form-control"
+                           value="@Model.AppointmentTime"
+                           readonly />
+                </div>
+
+                <div class="mb-3">
+                    <label>Status</label>
+
+                    <select asp-for="Status" class="form-select">
+
+                        <option value="Approved">Approved</option>
+
+                        <option value="Rejected">Rejected</option>
+
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Remarks</label>
+
+                    <textarea asp-for="Remarks"
+                              class="form-control"
+                              rows="4"
+                              placeholder="Enter counselling remarks..."></textarea>
+
+                </div>
+
+                <button class="btn btn-success">
+                    💾 Save Review
+                </button>
+
+                <a asp-action="PendingAppointments"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

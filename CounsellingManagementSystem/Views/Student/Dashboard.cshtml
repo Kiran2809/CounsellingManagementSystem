@@ -1,0 +1,112 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["Title"] = "Student Dashboard";
+}
+
+<div class="container-fluid">
+
+    <h2 class="mb-4">
+        🎓 Student Dashboard
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card bg-primary text-white shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>Welcome</h5>
+
+                    <h3>@ViewBag.StudentName</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card bg-success text-white shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>Total Appointments</h5>
+
+                    <h2>@ViewBag.TotalAppointments</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card bg-warning shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>Pending</h5>
+
+                    <h2>@ViewBag.PendingAppointments</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr />
+
+    <h3 class="mb-3">
+        Recent Appointments
+    </h3>
+
+    <table class="table table-bordered">
+
+        <tr class="table-success">
+
+            <th>Date</th>
+
+            <th>Time</th>
+
+            <th>Status</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.AppointmentDate.ToShortDateString()</td>
+
+                <td>@item.AppointmentTime</td>
+
+                <td>
+
+                    @if (item.Status == "Pending")
+                    {
+                        <span class="badge bg-warning">Pending</span>
+                    }
+                    else if (item.Status == "Approved")
+                    {
+                        <span class="badge bg-success">Approved</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Rejected</span>
+                    }
+
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+</div>

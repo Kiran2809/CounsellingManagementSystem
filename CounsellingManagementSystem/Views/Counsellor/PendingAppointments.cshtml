@@ -1,0 +1,112 @@
+﻿@model IEnumerable<CounsellingManagementSystem.Models.Appointment>
+
+@{
+    Layout = "~/Views/Shared/_CounsellorLayout.cshtml";
+    ViewData["Title"] = "Pending Appointments";
+}
+
+<div class="container-fluid mt-4">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-warning text-dark">
+            <h3 class="mb-0">
+                <i class="bi bi-calendar-check"></i>
+                Pending Appointments
+            </h3>
+        </div>
+
+        <div class="card-body">
+
+            @if (TempData["Success"] != null)
+            {
+                <div id="successAlert" class="alert alert-success">
+                    @TempData["Success"]
+                </div>
+            }
+
+            <div class="table-responsive">
+
+                <table class="table table-hover table-bordered align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>#</th>
+                            <th>Student</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @{
+                            int i = 1;
+                        }
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>@i</td>
+
+                                <td>
+                                    <i class="bi bi-person-circle text-primary"></i>
+                                    @item.Student.FullName
+                                </td>
+
+                                <td>@item.AppointmentDate.ToShortDateString()</td>
+
+                                <td>@item.AppointmentTime</td>
+
+                                <td>
+                                    <span class="badge bg-warning text-dark">
+                                        Pending
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <a asp-action="ReviewAppointment"
+                                       asp-route-id="@item.AppointmentId"
+                                       class="btn btn-primary btn-sm">
+
+                                        <i class="bi bi-pencil-square"></i>
+                                        Review
+
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+                            i++;
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script>
+        setTimeout(function() {
+            var alert = document.getElementById("successAlert");
+            if (alert) {
+                alert.style.display = "none";
+            }
+        }, 2000);
+    </script>
+}

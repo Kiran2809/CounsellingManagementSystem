@@ -1,0 +1,65 @@
+﻿@model CounsellingManagementSystem.Models.Counsellor
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Add Counsellor";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+            <h3>Add Counsellor</h3>
+        </div>
+
+        <div class="card-body">
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <form asp-action="AddCounsellor" method="post">
+
+                <div class="mb-3">
+                    <label>Full Name</label>
+                    <input asp-for="FullName" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input asp-for="Email" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input asp-for="Password"
+                           type="password"
+                           class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Department</label>
+                    <input asp-for="Department"
+                           class="form-control" />
+                </div>
+
+                <button class="btn btn-success">
+                    Save Counsellor
+                </button>
+
+                <a asp-action="ViewCounsellors"
+                   class="btn btn-secondary">
+                    Back
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

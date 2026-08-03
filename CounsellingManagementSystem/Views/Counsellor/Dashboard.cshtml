@@ -1,0 +1,95 @@
+﻿@model IEnumerable<CounsellingManagementSystem.Models.Appointment>
+
+@{
+    Layout = "~/Views/Shared/_CounsellorLayout.cshtml";
+    ViewData["Title"] = "Counsellor Dashboard";
+}
+
+<h3>Welcome, @ViewBag.CounsellorName 👋</h3>
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card bg-primary text-white">
+
+            <div class="card-body text-center">
+
+                <h5>Total Appointments</h5>
+
+                <h2>@ViewBag.TotalAppointments</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card bg-warning">
+
+            <div class="card-body text-center">
+
+                <h5>Pending</h5>
+
+                <h2>@ViewBag.Pending</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card bg-success text-white">
+
+            <div class="card-body text-center">
+
+                <h5>Approved</h5>
+
+                <h2>@ViewBag.Approved</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr />
+
+<h3>Recent Appointments</h3>
+
+<table class="table table-bordered">
+
+    <tr class="table-info">
+
+        <th>Student</th>
+
+        <th>Date</th>
+
+        <th>Time</th>
+
+        <th>Status</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@item.Student.FullName</td>
+
+            <td>@item.AppointmentDate.ToShortDateString()</td>
+
+            <td>@item.AppointmentTime</td>
+
+            <td>@item.Status</td>
+
+        </tr>
+    }
+
+</table>

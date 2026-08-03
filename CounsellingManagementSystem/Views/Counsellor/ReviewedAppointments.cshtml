@@ -1,0 +1,79 @@
+﻿@model IEnumerable<CounsellingManagementSystem.Models.Appointment>
+
+@{
+    Layout = "~/Views/Shared/_CounsellorLayout.cshtml";
+    ViewData["Title"] = "Reviewed Appointments";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div id="successAlert" class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+<div class="container mt-4">
+
+    <h2>✅ Reviewed Appointments</h2>
+
+    <table class="table table-bordered table-hover">
+
+        <thead class="table-dark">
+
+            <tr>
+                <th>Student</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Remarks</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.Student.FullName</td>
+
+                    <td>@item.AppointmentDate.ToShortDateString()</td>
+
+                    <td>@item.AppointmentTime</td>
+
+                    <td>
+
+                        @if (item.Status == "Approved")
+                        {
+                            <span class="badge bg-success">Approved</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Rejected</span>
+                        }
+
+                    </td>
+
+                    <td>@item.Remarks</td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
+
+@section Scripts
+{
+    <script>
+        setTimeout(function() {
+            var alert = document.getElementById("successAlert");
+            if (alert) {
+                alert.remove();
+            }
+        }, 2000);
+    </script>
+}

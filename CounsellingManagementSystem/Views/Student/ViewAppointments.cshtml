@@ -1,0 +1,81 @@
+﻿@model IEnumerable<CounsellingManagementSystem.Models.Appointment>
+
+@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["Title"] = "My Appointments";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">My Appointments</h2>
+
+    <table class="table table-bordered table-hover">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Counsellor Remarks</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.AppointmentDate.ToShortDateString()</td>
+
+                    <td>@item.AppointmentTime</td>
+
+                    <td>@item.Reason</td>
+
+                    <td>
+
+                        @if (item.Status == "Pending")
+                        {
+                            <span class="badge bg-warning text-dark">
+                                Pending
+                            </span>
+                        }
+                        else if (item.Status == "Approved")
+                        {
+                            <span class="badge bg-success">
+                                Approved
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">
+                                Rejected
+                            </span>
+                        }
+
+                    </td>
+
+                    <td>
+
+                        @if (string.IsNullOrEmpty(item.Remarks))
+                        {
+                            <span class="text-muted">
+                                No Remarks
+                            </span>
+                        }
+                        else
+                        {
+                            @item.Remarks
+                        }
+
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
