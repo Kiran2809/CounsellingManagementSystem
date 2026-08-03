@@ -218,6 +218,62 @@ Create a new account from the Registration page.
 
 ---
 
+# 📸 Project Screenshots
+
+## 🏠 Home Page / Login
+
+![Home Page](Screenshots/Home%20PageLogin.png)
+
+---
+
+## 👨‍💼 Admin Dashboard
+
+![Admin Dashboard](Screenshots/Admin%20Dashboard.png)
+
+---
+
+## 👨‍🎓 Student Dashboard
+
+![Student Dashboard](Screenshots/Student%20Dashboard.png)
+
+---
+
+## 👨‍🏫 Counsellor Dashboard
+
+![Counsellor Dashboard](Screenshots/Counsellor%20Dashboard.png)
+
+---
+
+## 📅 Book Appointment
+
+![Book Appointment](Screenshots/Book%20Appointment%20Page.png)
+
+---
+
+## 📋 Student Appointment History
+
+![Student Appointment History](Screenshots/Student%20Appointment%20History.png)
+
+---
+
+## 👥 Manage Students
+
+![Manage Students](Screenshots/Manage%20Students.png)
+
+---
+
+## 👨‍🏫 Manage Counsellors
+
+![Manage Counsellors](Screenshots/Manage%20Counsellors.png)
+
+---
+
+## 📑 Manage Appointments
+
+![Manage Appointments](Screenshots/Manage%20Appointments.png)
+
+---
+
 # 🎯 Future Enhancements
 
 - Forgot Password using Email OTP
