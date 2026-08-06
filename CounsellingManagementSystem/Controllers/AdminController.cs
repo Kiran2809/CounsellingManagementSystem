@@ -27,19 +27,26 @@ namespace CounsellingManagementSystem.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
-            var admin = _context.Admins
-                .FirstOrDefault(a => a.Username == username && a.Password == password);
-
-            if (admin != null)
+            try
             {
-                HttpContext.Session.SetInt32("AdminId", admin.AdminId);
-                HttpContext.Session.SetString("AdminName", admin.Username);
+                var admin = _context.Admins
+                    .FirstOrDefault(a => a.Username == username && a.Password == password);
 
-                return RedirectToAction("Dashboard");
+                if (admin != null)
+                {
+                    HttpContext.Session.SetInt32("AdminId", admin.AdminId);
+                    HttpContext.Session.SetString("AdminName", admin.Username);
+
+                    return RedirectToAction("Dashboard");
+                }
+
+                ViewBag.Error = "Invalid Username or Password";
+                return View();
             }
-
-            ViewBag.Error = "Invalid Username or Password";
-            return View();
+            catch (Exception ex)
+            {
+                return Content(ex.ToString());
+            }
         }
 
         public IActionResult Dashboard()
